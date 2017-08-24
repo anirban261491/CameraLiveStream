@@ -12,20 +12,25 @@
 {
     AVCaptureDeviceInput *cameraDeviceInput;
     AVCaptureSession* captureSession;
-    AVSampleBufferDisplayLayer* displayLayer;
+    
     
     VTCompressionSessionRef compressionSession;
-    BOOL timebaseSet;
+    
 }
 @end
 
 @implementation ViewController
 
+bool timebaseSet=false;
+bool encodeVideo=true;
+AVSampleBufferDisplayLayer* displayLayer;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self initializeDisplayLayer];
     
+    [self initializeDisplayLayer];
+    [self initializeVideoCaptureSession];
 }
 
 -(void) initializeDisplayLayer
@@ -107,12 +112,48 @@
     return captureDevice;
 }
 
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+    if ([connection isVideoOrientationSupported]) {
+        [connection setVideoOrientation:[UIDevice currentDevice].orientation];
+    }
+    // The video can either be encoded, decoded and then displayed... or just displayed with no encoding
+    if(encodeVideo)
+    {
+        CFRetain(sampleBuffer);
+        
+        //NSLog(@"PTS: %f", CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)));
+        
+        CVPixelBufferRef pixelBuffer =CMSampleBufferGetImageBuffer(sampleBuffer);
+        CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+        CMTime duration = CMSampleBufferGetDuration(sampleBuffer);
+        
+        VTEncodeInfoFlags flags;
+        
+        VTCompressionSessionEncodeFrame(compressionSession, pixelBuffer, pts, duration, NULL, NULL, &flags);
+        
+        CFRelease(sampleBuffer);
+    }
+    else
+    {
+        CFRetain(sampleBuffer);
+        
+        [displayLayer enqueueSampleBuffer:sampleBuffer];
+        
+        CFRelease(sampleBuffer);
+    }
+}
+
+
 -(void) initializeCompressionSession
 {
     OSStatus err = noErr;
     
-    err = VTCompressionSessionCreate(kCFAllocatorDefault, 1024,  576, kCMVideoCodecType_H264, NULL, NULL, NULL, &vtCallback, (__bridge void*) self, &compressionSession);
-    
+    err = VTCompressionSessionCreate(kCFAllocatorDefault, self.VideoView.frame.size.width, self.VideoView.frame.size.height, kCMVideoCodecType_H264, NULL, NULL, NULL, &vtCallback, (__bridge void*) self, &compressionSession);
+    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
+    char one=1;
+    CFNumberRef n = CFNumberCreate(kCFAllocatorDefault, 1, &one);
+    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxFrameDelayCount, n);
     if(err == noErr)
     {
         NSLog(@"Compression Session Create Success!");
@@ -151,6 +192,41 @@ void vtCallback(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus st
 }
 
 
+-(void) startCaputureSession
+{
+    if(encodeVideo)
+    {
+        [self initializeCompressionSession];
+    }
+    
+    [captureSession startRunning];
+    
+    // You must call flush when resuming!
+    if(displayLayer)
+    {
+        [displayLayer flushAndRemoveImage];
+    }
+    
+    NSLog(@"Start Video Capture Session....");
+}
+
+-(void) stopCaputureSession
+{
+    [captureSession stopRunning];
+    [displayLayer flushAndRemoveImage];
+    
+    NSLog(@"Stop Video Capture Session....");
+}
+- (IBAction)startPressed:(id)sender {
+    if([captureSession isRunning])
+    {
+        [self stopCaputureSession];
+    }
+    else
+    {
+        [self startCaputureSession];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
