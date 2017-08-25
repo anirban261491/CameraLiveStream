@@ -1,0 +1,4 @@
+use_frameworks! 
+target 'CameraLiveStream' do
+	pod 'CocoaAsyncSocket'  
+end

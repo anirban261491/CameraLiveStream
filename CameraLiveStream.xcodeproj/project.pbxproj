@@ -15,6 +15,7 @@
 		5A65B1A61F4E3566005B5EB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A65B1A41F4E3566005B5EB5 /* LaunchScreen.storyboard */; };
 		5A65B1B11F4E3566005B5EB5 /* CameraLiveStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A65B1B01F4E3566005B5EB5 /* CameraLiveStreamTests.m */; };
 		5A65B1BC1F4E3566005B5EB5 /* CameraLiveStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A65B1BB1F4E3566005B5EB5 /* CameraLiveStreamUITests.m */; };
+		7E490CAD017200D1BC31B96E /* Pods_CameraLiveStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536677D9AABC46387104F4A3 /* Pods_CameraLiveStream.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02F3439369E589492F6E3F2E /* Pods-CameraLiveStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraLiveStream.release.xcconfig"; path = "Pods/Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.release.xcconfig"; sourceTree = "<group>"; };
+		536677D9AABC46387104F4A3 /* Pods_CameraLiveStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CameraLiveStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A65B1931F4E3566005B5EB5 /* CameraLiveStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraLiveStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A65B1971F4E3566005B5EB5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5A65B1991F4E3566005B5EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		5A65B1B71F4E3566005B5EB5 /* CameraLiveStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CameraLiveStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A65B1BB1F4E3566005B5EB5 /* CameraLiveStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraLiveStreamUITests.m; sourceTree = "<group>"; };
 		5A65B1BD1F4E3566005B5EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9CA6763F96B09D9B0146ADF /* Pods-CameraLiveStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraLiveStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E490CAD017200D1BC31B96E /* Pods_CameraLiveStream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2945AF5BF0E326F77094612E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				536677D9AABC46387104F4A3 /* Pods_CameraLiveStream.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A65B18A1F4E3566005B5EB5 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,8 @@
 				5A65B1AF1F4E3566005B5EB5 /* CameraLiveStreamTests */,
 				5A65B1BA1F4E3566005B5EB5 /* CameraLiveStreamUITests */,
 				5A65B1941F4E3566005B5EB5 /* Products */,
+				E06085EBEC4E551F79E29199 /* Pods */,
+				2945AF5BF0E326F77094612E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +155,15 @@
 			path = CameraLiveStreamUITests;
 			sourceTree = "<group>";
 		};
+		E06085EBEC4E551F79E29199 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9CA6763F96B09D9B0146ADF /* Pods-CameraLiveStream.debug.xcconfig */,
+				02F3439369E589492F6E3F2E /* Pods-CameraLiveStream.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A65B1C01F4E3566005B5EB5 /* Build configuration list for PBXNativeTarget "CameraLiveStream" */;
 			buildPhases = (
+				B9B2DD57487A611CE54C5198 /* [CP] Check Pods Manifest.lock */,
 				5A65B18F1F4E3566005B5EB5 /* Sources */,
 				5A65B1901F4E3566005B5EB5 /* Frameworks */,
 				5A65B1911F4E3566005B5EB5 /* Resources */,
+				B9E0FE55F2A987FB9917D77D /* [CP] Embed Pods Frameworks */,
+				38AC48EFCA52DAA83A0FCFC4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,6 +297,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38AC48EFCA52DAA83A0FCFC4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9B2DD57487A611CE54C5198 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CameraLiveStream-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9E0FE55F2A987FB9917D77D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5A65B18F1F4E3566005B5EB5 /* Sources */ = {
@@ -427,6 +508,7 @@
 		};
 		5A65B1C11F4E3566005B5EB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9CA6763F96B09D9B0146ADF /* Pods-CameraLiveStream.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XE6XA4DH2N;
@@ -439,6 +521,7 @@
 		};
 		5A65B1C21F4E3566005B5EB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02F3439369E589492F6E3F2E /* Pods-CameraLiveStream.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XE6XA4DH2N;

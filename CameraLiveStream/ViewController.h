@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <VideoToolbox/VideoToolbox.h>
-#include <VideoToolbox/VTCompressionProperties.h>
-@interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate>
+#import "GCDAsyncUdpSocket.h"
+@interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,GCDAsyncUdpSocketDelegate>
 @property (weak, nonatomic) IBOutlet UIView *VideoView;
 
 

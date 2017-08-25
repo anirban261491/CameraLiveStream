@@ -16,11 +16,14 @@
     
     VTCompressionSessionRef compressionSession;
     
+    
+    
 }
 @end
 
 @implementation ViewController
-
+GCDAsyncUdpSocket *udpSocket;
+int tag;
 bool timebaseSet=false;
 bool encodeVideo=true;
 AVSampleBufferDisplayLayer* displayLayer;
@@ -28,7 +31,9 @@ AVSampleBufferDisplayLayer* displayLayer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    tag=0;
+    dispatch_queue_t queue = dispatch_queue_create("com.livestream.queue", DISPATCH_QUEUE_SERIAL);
+    udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:queue];
     [self initializeDisplayLayer];
     [self initializeVideoCaptureSession];
 }
@@ -189,6 +194,78 @@ void vtCallback(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus st
     {
         NSLog(@"Not Ready...");
     }
+    NSMutableData *elementaryStream = [NSMutableData data];
+    BOOL isIFrame = NO;
+    CFArrayRef attachmentsArray = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, 0);
+    if (CFArrayGetCount(attachmentsArray)) {
+        CFBooleanRef notSync;
+        CFDictionaryRef dict = CFArrayGetValueAtIndex(attachmentsArray, 0);
+        BOOL keyExists = CFDictionaryGetValueIfPresent(dict,
+                                                       kCMSampleAttachmentKey_NotSync,
+                                                       (const void **)&notSync);
+        // An I-Frame is a sync frame
+        isIFrame = !keyExists || !CFBooleanGetValue(notSync);
+    }
+    
+    static const size_t startCodeLength = 4;
+    static const uint8_t startCode[] = {0x00, 0x00, 0x00, 0x01};
+    if (isIFrame) {
+        CMFormatDescriptionRef description = CMSampleBufferGetFormatDescription(sampleBuffer);
+        
+        // Find out how many parameter sets there are
+        size_t numberOfParameterSets;
+        CMVideoFormatDescriptionGetH264ParameterSetAtIndex(description,
+                                                           0, NULL, NULL,
+                                                           &numberOfParameterSets,
+                                                           NULL);
+        
+        // Write each parameter set to the elementary stream
+        for (int i = 0; i < numberOfParameterSets; i++) {
+            const uint8_t *parameterSetPointer;
+            size_t parameterSetLength;
+            CMVideoFormatDescriptionGetH264ParameterSetAtIndex(description,
+                                                               i,
+                                                               &parameterSetPointer,
+                                                               &parameterSetLength,
+                                                               NULL, NULL);
+            
+            // Write the parameter set to the elementary stream
+            [elementaryStream appendBytes:startCode length:startCodeLength];
+            [elementaryStream appendBytes:parameterSetPointer length:parameterSetLength];
+        }
+    }
+    
+    size_t blockBufferLength;
+    uint8_t *bufferDataPointer = NULL;
+    CMBlockBufferGetDataPointer(CMSampleBufferGetDataBuffer(sampleBuffer),
+                                0,
+                                NULL,
+                                &blockBufferLength,
+                                (char **)&bufferDataPointer);
+    
+    size_t bufferOffset = 0;
+    static const int AVCCHeaderLength = 4;
+    
+    while (bufferOffset < blockBufferLength - AVCCHeaderLength) { // Read the NAL unit length
+        uint32_t NALUnitLength = 0; memcpy(&NALUnitLength, bufferDataPointer + bufferOffset, AVCCHeaderLength);
+        // Convert the length value from Big-endian to Little-endian
+        NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
+        // Write start code to the elementary stream
+        [elementaryStream appendBytes:startCode length:startCodeLength];
+        // Write the NAL unit without the AVCC length header to the elementary stream
+        [elementaryStream appendBytes:bufferDataPointer + bufferOffset + AVCCHeaderLength length:NALUnitLength];
+        // Move to the next NAL unit in the block buffer
+        bufferOffset += AVCCHeaderLength + NALUnitLength;
+    }
+    
+    uint8_t *bytes = (uint8_t*)[elementaryStream bytes];
+    int size = (int)[elementaryStream length];
+    
+    NSData *data=[NSData dataWithBytes:bytes length:size];
+    
+    [udpSocket sendData:data toHost:@"172.20.10.4" port:1900 withTimeout:-1 tag:tag];
+    tag++;
+    
 }
 
 
@@ -227,6 +304,26 @@ void vtCallback(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus st
         [self startCaputureSession];
     }
 }
+
+
+-(void)startServer
+{
+    NSError *error;
+    if (![udpSocket bindToPort:1900 error:&error])
+    {
+        NSLog(@"Bind error");
+    }
+    if (![udpSocket beginReceiving:&error])
+    {
+        [udpSocket close];
+        
+        NSLog(@"Receiving error");
+        return;
+    }
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
