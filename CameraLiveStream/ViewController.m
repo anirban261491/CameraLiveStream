@@ -236,49 +236,49 @@ void vtCallback(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus st
 //        NSLog(@"Not Ready...");
 //    }
     NSMutableData *elementaryStream = [NSMutableData data];
-    BOOL isIFrame = NO;
-    CFArrayRef attachmentsArray = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, 0);
-    if (CFArrayGetCount(attachmentsArray)) {
-        CFBooleanRef notSync;
-        CFDictionaryRef dict = CFArrayGetValueAtIndex(attachmentsArray, 0);
-        BOOL keyExists = CFDictionaryGetValueIfPresent(dict,
-                                                       kCMSampleAttachmentKey_NotSync,
-                                                       (const void **)&notSync);
-        // An I-Frame is a sync frame
-        isIFrame = !keyExists || !CFBooleanGetValue(notSync);
-    }
+    bool keyframe = !CFDictionaryContainsKey( (CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true), 0)), kCMSampleAttachmentKey_NotSync);
+    
     
     static const size_t startCodeLength = 4;
     static const uint8_t startCode[] = {0x00, 0x00, 0x00, 0x01};
-    if (isIFrame) {
+    
+    
+    
+    if (keyframe) {
         CMFormatDescriptionRef description = CMSampleBufferGetFormatDescription(sampleBuffer);
         
         // Find out how many parameter sets there are
         size_t numberOfParameterSets;
-        CMVideoFormatDescriptionGetH264ParameterSetAtIndex(description,
+        OSStatus statusCode=CMVideoFormatDescriptionGetH264ParameterSetAtIndex(description,
                                                            0, NULL, NULL,
                                                            &numberOfParameterSets,
                                                            NULL);
         
         // Write each parameter set to the elementary stream
-        for (int i = 0; i < numberOfParameterSets; i++) {
-            const uint8_t *parameterSetPointer;
-            size_t parameterSetLength;
-            CMVideoFormatDescriptionGetH264ParameterSetAtIndex(description,
+        if(statusCode==noErr)
+        {
+            for (int i = 0; i < numberOfParameterSets; i++) {
+                const uint8_t *parameterSetPointer;
+                size_t parameterSetLength;
+                OSStatus statusCode=CMVideoFormatDescriptionGetH264ParameterSetAtIndex(description,
                                                                i,
                                                                &parameterSetPointer,
                                                                &parameterSetLength,
                                                                NULL, NULL);
-            
-            // Write the parameter set to the elementary stream
-            [elementaryStream appendBytes:startCode length:startCodeLength];
-            [elementaryStream appendBytes:parameterSetPointer length:parameterSetLength];
+                
+                if(statusCode==noErr)
+                {
+                    // Write the parameter set to the elementary stream
+                    [elementaryStream appendBytes:startCode length:startCodeLength];
+                    [elementaryStream appendBytes:parameterSetPointer length:parameterSetLength];
+                }
+            }
         }
     }
     
     size_t blockBufferLength;
     uint8_t *bufferDataPointer = NULL;
-    CMBlockBufferGetDataPointer(CMSampleBufferGetDataBuffer(sampleBuffer),
+    OSStatus statusCodeRet =CMBlockBufferGetDataPointer(CMSampleBufferGetDataBuffer(sampleBuffer),
                                 0,
                                 NULL,
                                 &blockBufferLength,
@@ -287,20 +287,25 @@ void vtCallback(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus st
     // Loop through all the NAL units in the block buffer
     // and write them to the elementary stream with
     // start codes instead of AVCC length headers
-    size_t bufferOffset = 0;
-    static const int AVCCHeaderLength = 4;
     
-    while (bufferOffset < blockBufferLength - AVCCHeaderLength) {
-        // Read the NAL unit length
-        uint32_t NALUnitLength = 0; memcpy(&NALUnitLength, bufferDataPointer + bufferOffset, AVCCHeaderLength);
-        // Convert the length value from Big-endian to Little-endian
-        NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
-        // Write start code to the elementary stream
-        [elementaryStream appendBytes:startCode length:startCodeLength];
-        // Write the NAL unit without the AVCC length header to the elementary stream
-        [elementaryStream appendBytes:bufferDataPointer + bufferOffset + AVCCHeaderLength length:NALUnitLength];
-        // Move to the next NAL unit in the block buffer
-        bufferOffset += AVCCHeaderLength + NALUnitLength;
+    if(statusCodeRet==noErr)
+    {
+        size_t bufferOffset = 0;
+        static const int AVCCHeaderLength = 4;
+    
+        while (bufferOffset < blockBufferLength - AVCCHeaderLength) {
+            // Read the NAL unit length
+            uint32_t NALUnitLength = 0;
+            memcpy(&NALUnitLength, bufferDataPointer + bufferOffset, AVCCHeaderLength);
+            // Convert the length value from Big-endian to Little-endian
+            NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
+            // Write start code to the elementary stream
+            //[elementaryStream appendBytes:startCode length:startCodeLength];
+            // Write the NAL unit without the AVCC length header to the elementary stream
+            [elementaryStream appendBytes:bufferDataPointer + bufferOffset + AVCCHeaderLength length:NALUnitLength];
+            // Move to the next NAL unit in the block buffer
+            bufferOffset += AVCCHeaderLength + NALUnitLength;
+        }
     }
     
     uint8_t *bytes = (uint8_t*)[elementaryStream bytes];
@@ -429,7 +434,7 @@ void vtCallback(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus st
     if(nalu_type == 8) {
         
         // find where the NALU after this one starts so we know how long the PPS parameter is
-        for (int i = _spsSize + 12; i < _spsSize + 50; i++)
+        for (int i = _spsSize + 4; i < _spsSize + 30; i++)
         {
             if (frame[i] == 0x00 && frame[i+1] == 0x00 && frame[i+2] == 0x00 && frame[i+3] == 0x01)
             {
