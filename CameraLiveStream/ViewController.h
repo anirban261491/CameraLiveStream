@@ -10,7 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <VideoToolbox/VideoToolbox.h>
 #import "GCDAsyncUdpSocket.h"
-@interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,GCDAsyncUdpSocketDelegate>
+#import "H264HwEncoderImpl.h"
+@interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,GCDAsyncUdpSocketDelegate,H264HwEncoderImplDelegate>
 @property (weak, nonatomic) IBOutlet UIView *VideoView;
 @property (nonatomic, assign) CMVideoFormatDescriptionRef formatDesc;
 @property (nonatomic, assign) VTDecompressionSessionRef decompressionSession;

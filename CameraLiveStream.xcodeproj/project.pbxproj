@@ -16,6 +16,7 @@
 		5A65B1B11F4E3566005B5EB5 /* CameraLiveStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A65B1B01F4E3566005B5EB5 /* CameraLiveStreamTests.m */; };
 		5A65B1BC1F4E3566005B5EB5 /* CameraLiveStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A65B1BB1F4E3566005B5EB5 /* CameraLiveStreamUITests.m */; };
 		7E490CAD017200D1BC31B96E /* Pods_CameraLiveStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536677D9AABC46387104F4A3 /* Pods_CameraLiveStream.framework */; };
+		CC434C7C1F58C36B00C08900 /* H264HwEncoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC434C7B1F58C36B00C08900 /* H264HwEncoderImpl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		5A65B1B71F4E3566005B5EB5 /* CameraLiveStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CameraLiveStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A65B1BB1F4E3566005B5EB5 /* CameraLiveStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraLiveStreamUITests.m; sourceTree = "<group>"; };
 		5A65B1BD1F4E3566005B5EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC434C7A1F58C35B00C08900 /* H264HwEncoderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264HwEncoderImpl.h; sourceTree = "<group>"; };
+		CC434C7B1F58C36B00C08900 /* H264HwEncoderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HwEncoderImpl.m; sourceTree = "<group>"; };
 		E9CA6763F96B09D9B0146ADF /* Pods-CameraLiveStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraLiveStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +119,8 @@
 		5A65B1951F4E3566005B5EB5 /* CameraLiveStream */ = {
 			isa = PBXGroup;
 			children = (
+				CC434C7A1F58C35B00C08900 /* H264HwEncoderImpl.h */,
+				CC434C7B1F58C36B00C08900 /* H264HwEncoderImpl.m */,
 				5A65B1991F4E3566005B5EB5 /* AppDelegate.h */,
 				5A65B19A1F4E3566005B5EB5 /* AppDelegate.m */,
 				5A65B19C1F4E3566005B5EB5 /* ViewController.h */,
@@ -360,6 +365,7 @@
 				5A65B19E1F4E3566005B5EB5 /* ViewController.m in Sources */,
 				5A65B19B1F4E3566005B5EB5 /* AppDelegate.m in Sources */,
 				5A65B1981F4E3566005B5EB5 /* main.m in Sources */,
+				CC434C7C1F58C36B00C08900 /* H264HwEncoderImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +607,7 @@
 				5A65B1C21F4E3566005B5EB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A65B1C31F4E3566005B5EB5 /* Build configuration list for PBXNativeTarget "CameraLiveStreamTests" */ = {
 			isa = XCConfigurationList;
@@ -609,6 +616,7 @@
 				5A65B1C51F4E3566005B5EB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A65B1C61F4E3566005B5EB5 /* Build configuration list for PBXNativeTarget "CameraLiveStreamUITests" */ = {
 			isa = XCConfigurationList;
@@ -617,6 +625,7 @@
 				5A65B1C81F4E3566005B5EB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
