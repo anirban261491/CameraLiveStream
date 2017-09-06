@@ -17,7 +17,5 @@
 @property (nonatomic, assign) VTDecompressionSessionRef decompressionSession;
 @property (nonatomic, assign) int spsSize;
 @property (nonatomic, assign) int ppsSize;
--(void) receivedRawVideoFrame:(uint8_t *)frame withSize:(uint32_t)frameSize;
-extern ViewController *v;
 @end
 
