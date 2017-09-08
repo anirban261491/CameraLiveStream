@@ -13,9 +13,11 @@
     AVCaptureDeviceInput *cameraDeviceInput;
     AVCaptureSession* captureSession;
     H264HwEncoderImpl *h264Encoder;
-    NSMutableData *elementaryStream;
+    //NSMutableData *elementaryStream;
     dispatch_queue_t backgroundQueue;
-    
+    NSMutableArray *NALUnits;
+    int NALUnitNumber;
+    NSMutableData *NALUnit;
 }
 @end
 
@@ -33,11 +35,13 @@ AVSampleBufferDisplayLayer* displayLayer;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     tag=0;
+    NALUnitNumber=0;
+    NALUnits=[NSMutableArray new];
+    NALUnit=[NSMutableData new];
     dispatch_queue_t queue = dispatch_queue_create("com.livestream.queue", DISPATCH_QUEUE_SERIAL);
     backgroundQueue=dispatch_queue_create("com.livestream.backgroundQueue", DISPATCH_QUEUE_SERIAL);
     udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:queue];
     [udpSocket setMaxSendBufferSize:1024];
-    elementaryStream=[NSMutableData new];
     [self initializeDisplayLayer];
     h264Encoder = [H264HwEncoderImpl alloc];
     [h264Encoder initWithConfiguration];
@@ -141,36 +145,52 @@ AVSampleBufferDisplayLayer* displayLayer;
 - (void)gotSpsPps:(NSData*)sps pps:(NSData*)pps
 {
     NSLog(@"gotSpsPps %d %d", (int)[sps length], (int)[pps length]);
-    const char bytes[] = "\x00\x00\x00\x01";
-    size_t length = (sizeof bytes) - 1; //string literals have implicit trailing '\0'
-    [elementaryStream appendBytes:bytes length:length];
-    [elementaryStream appendData:sps];
-    [elementaryStream appendBytes:bytes length:length];
-    [elementaryStream appendData:pps];
-    
+    const char startCode[] = "\x00\x00\x00\x01";
+    size_t length = (sizeof startCode) - 1; //string literals have implicit trailing '\0'
+    [NALUnit setLength:0];
+    [NALUnit appendBytes:startCode length:length];
+    [NALUnit appendData:sps];
+    dispatch_async(backgroundQueue, ^{
+        
+        [self sendNewNALUnit:NALUnit];
+        
+    });
+    [NALUnit setLength:0];
+    [NALUnit appendBytes:startCode length:length];
+    [NALUnit appendData:pps];
+    dispatch_async(backgroundQueue, ^{
+        
+        [self sendNewNALUnit:NALUnit];
+        
+    });
 }
 - (void)gotEncodedData:(NSData*)data isKeyFrame:(BOOL)isKeyFrame
 {
     NSLog(@"gotEncodedData %d", (int)[data length]);
     //static int framecount = 1;
     
-    const char bytes[] = "\x00\x00\x00\x01";
-    size_t length = (sizeof bytes) - 1; //string literals have implicit trailing '\0'
+    const char startCode[] = "\x00\x00\x00\x01";
+    size_t length = (sizeof startCode) - 1; //string literals have implicit trailing '\0'
     
-    [elementaryStream appendBytes:bytes length:length];
-    [elementaryStream appendData:data];
+    [NALUnit setLength:0];
+    [NALUnit appendBytes:startCode length:length];
+    [NALUnit appendData:data];
     
+    dispatch_async(backgroundQueue, ^{
+        
+        [self sendNewNALUnit:NALUnit];
+        
+    });
     
-//    uint8_t *bytesForElementaryStream = (uint8_t*)[elementaryStream bytes];
-//    int size = (int)[elementaryStream length];
-    
-    
-    [udpSocket sendData:elementaryStream toHost:@"172.20.10.6" port:1900 withTimeout:-1 tag:tag++];
-    NSLog(@"%d",tag);
 }
 
 
-
+-(void)sendNewNALUnit:(NSData*)NALUnit
+{
+    NSLog(@"%lu", [NALUnit length]);
+    [udpSocket sendData:NALUnit toHost:@"172.20.10.6" port:1900 withTimeout:-1 tag:tag++];
+        
+}
 
 
 -(void) startCaputureSession
