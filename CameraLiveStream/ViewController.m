@@ -13,11 +13,7 @@
     AVCaptureDeviceInput *cameraDeviceInput;
     AVCaptureSession* captureSession;
     H264HwEncoderImpl *h264Encoder;
-    //NSMutableData *elementaryStream;
     dispatch_queue_t backgroundQueue;
-    NSMutableArray *NALUnits;
-    int NALUnitNumber;
-    NSMutableData *NALUnit;
 }
 @end
 
@@ -35,20 +31,19 @@ AVSampleBufferDisplayLayer* displayLayer;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     tag=0;
-    NALUnitNumber=0;
-    NALUnits=[NSMutableArray new];
-    NALUnit=[NSMutableData new];
-    dispatch_queue_t queue = dispatch_queue_create("com.livestream.queue", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t queue = dispatch_queue_create("com.socketDelegate.queue", DISPATCH_QUEUE_SERIAL);
     backgroundQueue=dispatch_queue_create("com.livestream.backgroundQueue", DISPATCH_QUEUE_SERIAL);
     udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:queue];
-    [udpSocket setMaxSendBufferSize:1024];
+    NSError *error;
+    //[udpSocket joinMulticastGroup:@"239.0.0.1" error:&error];
+    [udpSocket enableBroadcast:YES error:&error];
+    //[udpSocket setMaxSendBufferSize:1024];
     [self initializeDisplayLayer];
     h264Encoder = [H264HwEncoderImpl alloc];
     [h264Encoder initWithConfiguration];
     [self initializeVideoCaptureSession];
+    
 }
-
-
 
 
 -(void) initializeDisplayLayer
@@ -145,51 +140,45 @@ AVSampleBufferDisplayLayer* displayLayer;
 - (void)gotSpsPps:(NSData*)sps pps:(NSData*)pps
 {
     NSLog(@"gotSpsPps %d %d", (int)[sps length], (int)[pps length]);
-    const char startCode[] = "\x00\x00\x00\x01";
-    size_t length = (sizeof startCode) - 1; //string literals have implicit trailing '\0'
-    [NALUnit setLength:0];
-    [NALUnit appendBytes:startCode length:length];
-    [NALUnit appendData:sps];
+    
+    
     dispatch_async(backgroundQueue, ^{
-        
-        [self sendNewNALUnit:NALUnit];
-        
+        [self formAndSendNALUnits:sps];
+        [self formAndSendNALUnits:pps];
     });
-    [NALUnit setLength:0];
-    [NALUnit appendBytes:startCode length:length];
-    [NALUnit appendData:pps];
-    dispatch_async(backgroundQueue, ^{
-        
-        [self sendNewNALUnit:NALUnit];
-        
-    });
+    
 }
 - (void)gotEncodedData:(NSData*)data isKeyFrame:(BOOL)isKeyFrame
 {
     NSLog(@"gotEncodedData %d", (int)[data length]);
     //static int framecount = 1;
     
-    const char startCode[] = "\x00\x00\x00\x01";
-    size_t length = (sizeof startCode) - 1; //string literals have implicit trailing '\0'
-    
-    [NALUnit setLength:0];
-    [NALUnit appendBytes:startCode length:length];
-    [NALUnit appendData:data];
     
     dispatch_async(backgroundQueue, ^{
-        
-        [self sendNewNALUnit:NALUnit];
-        
+        [self formAndSendNALUnits:data];
     });
     
 }
 
-
--(void)sendNewNALUnit:(NSData*)NALUnit
+-(void)formAndSendNALUnits:(NSData*)data
 {
-    NSLog(@"%lu", [NALUnit length]);
-    [udpSocket sendData:NALUnit toHost:@"172.20.10.6" port:1900 withTimeout:-1 tag:tag++];
-        
+    const char startCode[] = "\x00\x00\x00\x01";
+    size_t length = (sizeof startCode) - 1;
+    
+    NSMutableData *NALUnit=[NSMutableData dataWithBytes:startCode length:length];
+    [NALUnit appendData:data];
+    [udpSocket sendData:NALUnit toHost:@"239.0.0.1" port:1900 withTimeout:-1 tag:tag++];
+}
+
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
+{
+    NSLog(@"1");
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    NSLog(@"1");
 }
 
 
