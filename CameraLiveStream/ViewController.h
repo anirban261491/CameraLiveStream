@@ -13,6 +13,7 @@
 #import "H264HwEncoderImpl.h"
 @interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,GCDAsyncUdpSocketDelegate,H264HwEncoderImplDelegate>
 @property (weak, nonatomic) IBOutlet UIView *VideoView;
+@property (weak, nonatomic) IBOutlet UIWebView *WebView;
 @property (nonatomic, assign) CMVideoFormatDescriptionRef formatDesc;
 @property (nonatomic, assign) VTDecompressionSessionRef decompressionSession;
 @property (nonatomic, assign) int spsSize;

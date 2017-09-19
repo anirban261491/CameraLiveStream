@@ -163,7 +163,7 @@ CMSampleBufferRef sampleBuffer )
             CVImageBufferRef imageBuffer = (CVImageBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
             
             // Create properties
-            CMTime presentationTimeStamp = CMTimeMake(frameCount, 1000);
+            CMTime presentationTimeStamp = CMTimeMake(frameCount, 30);
             //CMTime duration = CMTimeMake(1, DURATION);
             VTEncodeInfoFlags flags;
             

@@ -7,13 +7,15 @@
 //
 
 #import "ViewController.h"
-
+#import <ReplayKit/ReplayKit.h>
 @interface ViewController ()
 {
     AVCaptureDeviceInput *cameraDeviceInput;
     AVCaptureSession* captureSession;
     H264HwEncoderImpl *h264Encoder;
     dispatch_queue_t backgroundQueue;
+    NSInteger SCREENWIDTH,SCREENHEIGHT;
+    RPScreenRecorder *recorder;
 }
 @end
 
@@ -30,21 +32,36 @@ AVSampleBufferDisplayLayer* displayLayer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    SCREENWIDTH=[UIScreen mainScreen].bounds.size.width;
+    SCREENHEIGHT=[UIScreen mainScreen].bounds.size.height;
     tag=0;
     dispatch_queue_t queue = dispatch_queue_create("com.socketDelegate.queue", DISPATCH_QUEUE_SERIAL);
     backgroundQueue=dispatch_queue_create("com.livestream.backgroundQueue", DISPATCH_QUEUE_SERIAL);
     udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:queue];
     NSError *error;
-    //[udpSocket joinMulticastGroup:@"239.0.0.1" error:&error];
-    [udpSocket enableBroadcast:YES error:&error];
+    //[udpSocket enableBroadcast:YES error:&error];
     //[udpSocket setMaxSendBufferSize:1024];
-    [self initializeDisplayLayer];
+    //[self initializeDisplayLayer];
     h264Encoder = [H264HwEncoderImpl alloc];
     [h264Encoder initWithConfiguration];
-    [self initializeVideoCaptureSession];
+    //[self initializeVideoCaptureSession];
+    [h264Encoder initEncode:750 height:1334];
+    h264Encoder.delegate = self;
+    [self initializeScreenRecorder];
+    [self loadWebView];
     
 }
 
+
+-(void)loadWebView
+{
+    [_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com"]]];
+}
+
+-(void)initializeScreenRecorder
+{
+    recorder=[RPScreenRecorder sharedRecorder];
+}
 
 -(void) initializeDisplayLayer
 {
@@ -100,7 +117,7 @@ AVSampleBufferDisplayLayer* displayLayer;
     }
     
     [[output connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
-    [h264Encoder initEncode:480 height:640];
+    [h264Encoder initEncode:750 height:1334];
     h264Encoder.delegate = self;
 }
 
@@ -167,7 +184,7 @@ AVSampleBufferDisplayLayer* displayLayer;
     
     NSMutableData *NALUnit=[NSMutableData dataWithBytes:startCode length:length];
     [NALUnit appendData:data];
-    [udpSocket sendData:NALUnit toHost:@"239.0.0.1" port:1900 withTimeout:-1 tag:tag++];
+    [udpSocket sendData:NALUnit toHost:@"172.20.10.4" port:1900 withTimeout:-1 tag:tag++];
 }
 
 
@@ -203,13 +220,24 @@ AVSampleBufferDisplayLayer* displayLayer;
     NSLog(@"Stop Video Capture Session....");
 }
 - (IBAction)startPressed:(id)sender {
-    if([captureSession isRunning])
-    {
-        [self stopCaputureSession];
-    }
-    else
-    {
-        [self startCaputureSession];
+//    if([captureSession isRunning])
+//    {
+//        [self stopCaputureSession];
+//    }
+//    else
+//    {
+//        [self startCaputureSession];
+//    }
+    
+    if (@available(iOS 11.0, *)) {
+        [recorder startCaptureWithHandler:^(CMSampleBufferRef  _Nonnull sampleBuffer, RPSampleBufferType bufferType, NSError * _Nullable error) {
+            if(bufferType==1)
+                [h264Encoder encode:sampleBuffer];
+        } completionHandler:^(NSError * _Nullable error) {
+            NSLog(@"1");
+        }];
+    } else {
+        NSLog(@"1");
     }
 }
 
