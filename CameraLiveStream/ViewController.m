@@ -13,16 +13,17 @@
     AVCaptureDeviceInput *cameraDeviceInput;
     AVCaptureSession* captureSession;
     H264HwEncoderImpl *h264Encoder;
-    dispatch_queue_t backgroundQueue;
+    dispatch_queue_t backgroundQueue,sendScreenFramesForUploadQueue;
     NSInteger SCREENWIDTH,SCREENHEIGHT;
     RPScreenRecorder *recorder;
+    NSMutableArray *frames;
 }
 @end
 
 @implementation ViewController
 
 GCDAsyncUdpSocket *udpSocket;
-int tag;
+int tag,count;
 bool timebaseSet=false;
 bool encodeVideo=true;
 AVSampleBufferDisplayLayer* displayLayer;
@@ -32,11 +33,14 @@ AVSampleBufferDisplayLayer* displayLayer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    frames=[NSMutableArray new];
     SCREENWIDTH=[UIScreen mainScreen].bounds.size.width;
     SCREENHEIGHT=[UIScreen mainScreen].bounds.size.height;
     tag=0;
+    count=0;
     dispatch_queue_t queue = dispatch_queue_create("com.socketDelegate.queue", DISPATCH_QUEUE_SERIAL);
     backgroundQueue=dispatch_queue_create("com.livestream.backgroundQueue", DISPATCH_QUEUE_SERIAL);
+    sendScreenFramesForUploadQueue=dispatch_queue_create("com.sendScreenFramesForUpload.Queue", DISPATCH_QUEUE_SERIAL);
     udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:queue];
     NSError *error;
     //[udpSocket enableBroadcast:YES error:&error];
@@ -181,12 +185,19 @@ AVSampleBufferDisplayLayer* displayLayer;
 {
     const char startCode[] = "\x00\x00\x00\x01";
     size_t length = (sizeof startCode) - 1;
-    
+    int type = [self getNALUType:data];
     NSMutableData *NALUnit=[NSMutableData dataWithBytes:startCode length:length];
     [NALUnit appendData:data];
-    [udpSocket sendData:NALUnit toHost:@"172.20.10.4" port:1900 withTimeout:-1 tag:tag++];
+    [udpSocket sendData:NALUnit toHost:@"172.20.10.11" port:1900 withTimeout:-1 tag:tag++];
+    NSLog(@"Packet - %d, Size - %lu, Type - %d",count++,[NALUnit length],type);
 }
 
+
+- (int)getNALUType:(NSData *)NALU {
+    uint8_t * bytes = (uint8_t *) NALU.bytes;
+    
+    return bytes[0] & 0x1F;
+}
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
@@ -220,25 +231,23 @@ AVSampleBufferDisplayLayer* displayLayer;
     NSLog(@"Stop Video Capture Session....");
 }
 - (IBAction)startPressed:(id)sender {
-//    if([captureSession isRunning])
-//    {
-//        [self stopCaputureSession];
-//    }
-//    else
-//    {
-//        [self startCaputureSession];
-//    }
+    //    if([captureSession isRunning])
+    //    {
+    //        [self stopCaputureSession];
+    //    }
+    //    else
+    //    {
+    //        [self startCaputureSession];
+    //    }
     
-    if (@available(iOS 11.0, *)) {
+    
         [recorder startCaptureWithHandler:^(CMSampleBufferRef  _Nonnull sampleBuffer, RPSampleBufferType bufferType, NSError * _Nullable error) {
             if(bufferType==1)
                 [h264Encoder encode:sampleBuffer];
         } completionHandler:^(NSError * _Nullable error) {
             NSLog(@"1");
         }];
-    } else {
-        NSLog(@"1");
-    }
+
 }
 
 

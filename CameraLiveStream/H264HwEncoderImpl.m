@@ -45,6 +45,7 @@
     EncodingSession = nil;
     initialized = true;
     aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //aQueue = dispatch_queue_create("com.aQueue.Queue", DISPATCH_QUEUE_SERIAL);
     frameCount = 0;
     sps = NULL;
     pps = NULL;
@@ -163,7 +164,7 @@ CMSampleBufferRef sampleBuffer )
             CVImageBufferRef imageBuffer = (CVImageBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
             
             // Create properties
-            CMTime presentationTimeStamp = CMTimeMake(frameCount, 30);
+            CMTime presentationTimeStamp = CMTimeMake(frameCount, 60);
             //CMTime duration = CMTimeMake(1, DURATION);
             VTEncodeInfoFlags flags;
             
@@ -186,7 +187,7 @@ CMSampleBufferRef sampleBuffer )
                 return;
             }
             NSLog(@"H264: VTCompressionSessionEncodeFrame Success");
-       });
+      });
     
     
 }
