@@ -1,4 +1,5 @@
 use_frameworks! 
 target 'CameraLiveStream' do
 	pod 'CocoaAsyncSocket'  
+	pod "XCDYouTubeKit", "~> 2.5"
 end

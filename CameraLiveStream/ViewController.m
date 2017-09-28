@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import <ReplayKit/ReplayKit.h>
-@interface ViewController ()
+#import "XCDYouTubeVideoPlayerViewController.h"
+@interface ViewController ()<WKNavigationDelegate>
 {
     AVCaptureDeviceInput *cameraDeviceInput;
     AVCaptureSession* captureSession;
@@ -43,9 +44,6 @@ AVSampleBufferDisplayLayer* displayLayer;
     sendScreenFramesForUploadQueue=dispatch_queue_create("com.sendScreenFramesForUpload.Queue", DISPATCH_QUEUE_SERIAL);
     udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:queue];
     NSError *error;
-    //[udpSocket enableBroadcast:YES error:&error];
-    //[udpSocket setMaxSendBufferSize:1024];
-    //[self initializeDisplayLayer];
     h264Encoder = [H264HwEncoderImpl alloc];
     [h264Encoder initWithConfiguration];
     //[self initializeVideoCaptureSession];
@@ -59,7 +57,10 @@ AVSampleBufferDisplayLayer* displayLayer;
 
 -(void)loadWebView
 {
-    [_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com"]]];
+    _WebView.navigationDelegate = self;
+    NSURL *nsurl=[NSURL URLWithString:@"https://www.google.com"];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    [_WebView loadRequest:nsrequest];
 }
 
 -(void)initializeScreenRecorder
@@ -231,14 +232,14 @@ AVSampleBufferDisplayLayer* displayLayer;
     NSLog(@"Stop Video Capture Session....");
 }
 - (IBAction)startPressed:(id)sender {
-    //    if([captureSession isRunning])
-    //    {
-    //        [self stopCaputureSession];
-    //    }
-    //    else
-    //    {
-    //        [self startCaputureSession];
-    //    }
+//        if([captureSession isRunning])
+//        {
+//            [self stopCaputureSession];
+//        }
+//        else
+//        {
+//            [self startCaputureSession];
+//        }
     
     
         [recorder startCaptureWithHandler:^(CMSampleBufferRef  _Nonnull sampleBuffer, RPSampleBufferType bufferType, NSError * _Nullable error) {

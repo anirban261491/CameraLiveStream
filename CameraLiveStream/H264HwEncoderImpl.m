@@ -134,6 +134,24 @@ CMSampleBufferRef sampleBuffer )
         // For testing out the logic, lets read from a file and then send it to encoder to create h264 stream
         
         // Create the compression session
+//        CFStringRef key = kVTVideoEncoderSpecification_EncoderID;
+//        CFStringRef value = CFSTR("com.apple.videotoolbox.videoencoder.h264.gva");
+//
+//        CFStringRef bkey = CFSTR("EnableHardwareAcceleratedVideoEncoder");
+//        CFBooleanRef bvalue = kCFBooleanTrue;
+//
+//        CFStringRef ckey = CFSTR("RequireHardwareAcceleratedVideoEncoder");
+//        CFBooleanRef cvalue = kCFBooleanTrue;
+//
+//        CFMutableDictionaryRef encoderSpecifications = CFDictionaryCreateMutable(
+//                                                          kCFAllocatorDefault,
+//                                                          3,
+//                                                          &kCFTypeDictionaryKeyCallBacks,
+//                                                          &kCFTypeDictionaryValueCallBacks);
+//
+//        CFDictionaryAddValue(encoderSpecifications, bkey, bvalue);
+//        CFDictionaryAddValue(encoderSpecifications, ckey, cvalue);
+//        CFDictionaryAddValue(encoderSpecifications, key, value);
         OSStatus status = VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, didCompressH264, (__bridge void *)(self),  &EncodingSession);
         NSLog(@"H264: VTCompressionSessionCreate %d", (int)status);
         
@@ -147,10 +165,26 @@ CMSampleBufferRef sampleBuffer )
         }
         
         // Set the properties
-        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
-        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Main_AutoLevel);
+        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanFalse);
+        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Main_5_2);
+        int bitRate = 400*1024;
+        int bitRateLimit = (bitRate) / 8;
         
+        // that's why we set data in byte/second
+        CFNumberRef byteNum = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRateLimit);
+        int second = 1;
+        CFNumberRef secNum = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &second);
         
+        // add parameters into a array
+        const void* numbers[2] = {byteNum, secNum};
+        CFArrayRef dataRateLimits = CFArrayCreate(NULL, numbers, 2, &kCFTypeArrayCallBacks);
+        //VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_AverageBitRate, (__bridge CFTypeRef)@(bitRate));
+        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_DataRateLimits, dataRateLimits);
+        
+        int frameRate=60;
+        CFNumberRef frameRateValue = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &frameRate);
+        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_ExpectedFrameRate, frameRateValue);
+        VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, secNum);
         // Tell the encoder to start encoding
         VTCompressionSessionPrepareToEncodeFrames(EncodingSession);
     });
@@ -164,7 +198,7 @@ CMSampleBufferRef sampleBuffer )
             CVImageBufferRef imageBuffer = (CVImageBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
             
             // Create properties
-            CMTime presentationTimeStamp = CMTimeMake(frameCount, 60);
+            CMTime presentationTimeStamp = CMTimeMake(frameCount,30);
             //CMTime duration = CMTimeMake(1, DURATION);
             VTEncodeInfoFlags flags;
             

@@ -7,65 +7,134 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D0747F307F142F52FCE19296C1C1DDF /* Pods-CameraLiveStream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA1DF40DD30C9F4C824699E586F77B7 /* Pods-CameraLiveStream-dummy.m */; };
-		2DAA98C8614A6DED26CE8712531AE1FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3725257C79D0C80F87B9E2B291C17A /* Foundation.framework */; };
-		7B49A6B28E06F0E1E3C9D0F830E8ADF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3725257C79D0C80F87B9E2B291C17A /* Foundation.framework */; };
-		7E4F0161B4D135DA3A0763619A56C2F5 /* CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA669EA9DB68616A6ECA64CA78D52EAC /* CocoaAsyncSocket-dummy.m */; };
-		8480493AEC1C7AF1B5C0E0BF2F70FB44 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9509718CFCC3D81230AA7CF02478B7 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A882891E5A89CADF96C2CA79606409CA /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D82B81E88C7D98976B018DB4903B5D0C /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC7DC2A21843CD99040DCD79FF3BE91B /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 30CCCF41576100268BFA48C3EED9517C /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AEE9644DA0EFCF945438E125BA4F0724 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9235AEFD042C8D96AF4B4AA61E18C420 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B688B80E8B12B7F6988B29DC592DA94D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F6DD994291AA39A94BEECAFAF0D785 /* Security.framework */; };
-		D01B2EBC1AB52980422F5A831BBCE3F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A847C3B26F9C9E99A5ACEACF501F86DD /* CFNetwork.framework */; };
-		E4230DB0D114C94B081018C1AC1E9972 /* CocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8A7C0B72CB1BFEC20A42E9E5B3E1A5D /* CocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F9CA6CDA7A405D65DFF22CE683856F76 /* Pods-CameraLiveStream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66DA737E590950F5A5EBCB84AE5A0B61 /* Pods-CameraLiveStream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		114BBAFDDD6F49F02BE4998C506FAFA2 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE48249F551F0920E51724B91BC2455 /* JavaScriptCore.framework */; };
+		1425E49D4ECAA4282DBE8BAC5113802A /* XCDYouTubeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9085B6333B9B92AF7228A63CC372F035 /* XCDYouTubeClient.m */; };
+		21F8E19AAFE55A14C00857C5886855E5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F57F87B4419723C8142FEA89151D8AB /* MediaPlayer.framework */; };
+		2DAA98C8614A6DED26CE8712531AE1FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC00524D7C4A0A6B94819BCB8BEB13D /* Foundation.framework */; };
+		2FB1938FF68445DE8C1A7B5C776DFD18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC00524D7C4A0A6B94819BCB8BEB13D /* Foundation.framework */; };
+		316E4C757BC24FBC4128E7AD4AA38CEF /* XCDYouTubeVideoWebpage.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D7FD5A3910B052FE12E8A45952FA15 /* XCDYouTubeVideoWebpage.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		45A4C7330118D7BE4B0163FA0DC15D7E /* XCDYouTubePlayerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB90423A71B8368E42645F904424346 /* XCDYouTubePlayerScript.m */; };
+		4EF75D9CA852158A10E1D641D4D7DCA2 /* XCDYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD2A88B59628388069FEE90CA645102 /* XCDYouTubeVideo.m */; };
+		50DF71E24FC48B9C7953B78660FE309B /* XCDYouTubeError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4715F614D7F18D619C2AC299DDDFB7EC /* XCDYouTubeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57B5A37496807A52B529F719A46038DD /* XCDYouTubeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1F856DBCFA380895AECA1DEDC0A148 /* XCDYouTubeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63DC3DF064C577C8F82ED2028930ECE7 /* XCDYouTubeVideoPlayerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8782F2DE8191F654A1A09787A3A5E8AD /* XCDYouTubeVideoPlayerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		648FECCE63820113BFE2C678C10328EC /* XCDYouTubeVideoWebpage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E8C4E626C98CFBC9F44CCE6DC674E4 /* XCDYouTubeVideoWebpage.m */; };
+		679CD61BA9EF586C3BEC00A5E59B97D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC00524D7C4A0A6B94819BCB8BEB13D /* Foundation.framework */; };
+		725C2C98A9E2A82144D9478CC0EFF555 /* XCDYouTubeVideoOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F5AC3B116B83E15AB84348E01CE17E /* XCDYouTubeVideoOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C124F1A6CC9B5AA47BAA245EDE0B31F /* XCDYouTubePlayerScript.h in Headers */ = {isa = PBXBuildFile; fileRef = F58548C8EA7AD913D3EEC47FDA420AD0 /* XCDYouTubePlayerScript.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7E4F0161B4D135DA3A0763619A56C2F5 /* CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A22A7EF6FF6FB0242977C300CC73F2 /* CocoaAsyncSocket-dummy.m */; };
+		825D63902C72C093CD8C2E2AF4926D3C /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86160FB1E79C36722608A5561729BF07 /* XCDYouTubeVideoPlayerViewController.m */; };
+		8480493AEC1C7AF1B5C0E0BF2F70FB44 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA20AF5C35353C9FF4FAE32A24CC7D /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8C42A5DDEAFBF218D72FCA7B0A2DE6EE /* XCDYouTubeVideo+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C6E04BE91D0E6FE52380943B7689B1 /* XCDYouTubeVideo+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		92113A31D57868C8A4C301290C118126 /* Pods-CameraLiveStream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA1DF40DD30C9F4C824699E586F77B7 /* Pods-CameraLiveStream-dummy.m */; };
+		9F2635C972A1FA3666EFBF420DB40ADB /* XCDYouTubeVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FFCEF60BCDDD3710B1659995022BE4 /* XCDYouTubeVideoOperation.m */; };
+		A021D5E2476A65E4D7230346F145470D /* XCDYouTubeLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A34FC484D71C295EF515F2FDBF3C409 /* XCDYouTubeLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A882891E5A89CADF96C2CA79606409CA /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = B58F609FFC5A1626490896F1D67224B7 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC7DC2A21843CD99040DCD79FF3BE91B /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A9C01923B48DA78BC60A4D9C9C005E7 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEE9644DA0EFCF945438E125BA4F0724 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 151E04DFE6F99C77CD3CC06B203C4BC6 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B688B80E8B12B7F6988B29DC592DA94D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0360A033C72CA32ECF3088EDB6905B9 /* Security.framework */; };
+		BBAD0B6F9810E9AE8F824C855DA0888D /* XCDYouTubeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A77405B182FEF56ED225844DF6AA7BC9 /* XCDYouTubeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C869588956C80F7DE006A8528D107E8D /* XCDYouTubeClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FCCE2A5AD93065328A1FD2EBDE064A9 /* XCDYouTubeClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAE5324EE72E957CA1A8FDE8523110C8 /* XCDYouTubeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 371BB54448C5A7C5F84E96C31DFDF1C4 /* XCDYouTubeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D01B2EBC1AB52980422F5A831BBCE3F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0A1AD79C8E9F2D7104197E80F9C28D9 /* CFNetwork.framework */; };
+		D1B0CC683B9801948A1522577BDFC374 /* XCDYouTubeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9C6E18B4A19CFC6D5F51850DC6A0C4 /* XCDYouTubeVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB8529EE13A449F06A8307D69E78F431 /* XCDYouTubeLogger+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 896098063D4DA7AC2DC1C6196731812A /* XCDYouTubeLogger+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E4230DB0D114C94B081018C1AC1E9972 /* CocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF1779673C5778BED388AFAF0902EF6D /* CocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E45E1D2BB1A13E4D5C787930D1E0AFB5 /* XCDYouTubeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 740FEDEC4B6771DB46D2CAC32E7DB8C0 /* XCDYouTubeLogger.m */; };
+		F79A5423FC0658C6C249F184CB39D333 /* Pods-CameraLiveStream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66DA737E590950F5A5EBCB84AE5A0B61 /* Pods-CameraLiveStream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF0EDB8A49DD965A50AB951ADDACB3F2 /* XCDYouTubeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4B77EE985565A653D52741850B9ACF /* XCDYouTubeKit-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A0A96A6903D23201186B66DAB4213D58 /* PBXContainerItemProxy */ = {
+		4B227073F1EA8ECE4C5A696188B52DD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AC0D2D2B4EE7C873431AB3502859CA60;
 			remoteInfo = CocoaAsyncSocket;
 		};
+		EAB1E9CE5379197F56295336C266960F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E67B2EB6BCF955D702899CDB9677AB1;
+			remoteInfo = XCDYouTubeKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		024FAD3A9561D2F4CB106D15D9557461 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30CCCF41576100268BFA48C3EED9517C /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Source/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		03F5AC3B116B83E15AB84348E01CE17E /* XCDYouTubeVideoOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoOperation.h; path = XCDYouTubeKit/XCDYouTubeVideoOperation.h; sourceTree = "<group>"; };
+		05A22A7EF6FF6FB0242977C300CC73F2 /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
+		10FFCEF60BCDDD3710B1659995022BE4 /* XCDYouTubeVideoOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoOperation.m; path = XCDYouTubeKit/XCDYouTubeVideoOperation.m; sourceTree = "<group>"; };
+		151E04DFE6F99C77CD3CC06B203C4BC6 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Source/GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		1AD2A88B59628388069FEE90CA645102 /* XCDYouTubeVideo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideo.m; path = XCDYouTubeKit/XCDYouTubeVideo.m; sourceTree = "<group>"; };
+		2BE48249F551F0920E51724B91BC2455 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		32C6E04BE91D0E6FE52380943B7689B1 /* XCDYouTubeVideo+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCDYouTubeVideo+Private.h"; path = "XCDYouTubeKit/XCDYouTubeVideo+Private.h"; sourceTree = "<group>"; };
+		371BB54448C5A7C5F84E96C31DFDF1C4 /* XCDYouTubeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeKit.h; path = XCDYouTubeKit/XCDYouTubeKit.h; sourceTree = "<group>"; };
+		3A9C6E18B4A19CFC6D5F51850DC6A0C4 /* XCDYouTubeVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideo.h; path = XCDYouTubeKit/XCDYouTubeVideo.h; sourceTree = "<group>"; };
+		3E1F856DBCFA380895AECA1DEDC0A148 /* XCDYouTubeOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeOperation.h; path = XCDYouTubeKit/XCDYouTubeOperation.h; sourceTree = "<group>"; };
 		4254B5BE3C44AC3FE826A1884A9FBBA7 /* Pods-CameraLiveStream-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CameraLiveStream-frameworks.sh"; sourceTree = "<group>"; };
 		4489525BB9E762F4DD96F33C9F1F37D5 /* Pods-CameraLiveStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CameraLiveStream.release.xcconfig"; sourceTree = "<group>"; };
+		4715F614D7F18D619C2AC299DDDFB7EC /* XCDYouTubeError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeError.h; path = XCDYouTubeKit/XCDYouTubeError.h; sourceTree = "<group>"; };
+		4A4B77EE985565A653D52741850B9ACF /* XCDYouTubeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XCDYouTubeKit-dummy.m"; sourceTree = "<group>"; };
 		4AF7F3C32E05B324288AD35362C6C06E /* Pods-CameraLiveStream-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CameraLiveStream-acknowledgements.markdown"; sourceTree = "<group>"; };
-		50F6DD994291AA39A94BEECAFAF0D785 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		5309A46149A31DA0919F86B4D510C6B6 /* Pods_CameraLiveStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CameraLiveStream.framework; path = "Pods-CameraLiveStream.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56387DA55BBF9D5729BB7A1C311C2894 /* CocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
-		601E37EDFF15F9E763332F8ED114AF13 /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
+		511BC627FE9FB8DF3AD669BCF6A7BB83 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5272AC2BC7C5689C61EA20EE3ECCB8B4 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaAsyncSocket.framework; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A34FC484D71C295EF515F2FDBF3C409 /* XCDYouTubeLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeLogger.h; path = XCDYouTubeKit/XCDYouTubeLogger.h; sourceTree = "<group>"; };
+		5E61D141587397D4A62907326ACCB336 /* XCDYouTubeKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XCDYouTubeKit.xcconfig; sourceTree = "<group>"; };
+		5F57F87B4419723C8142FEA89151D8AB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		5FB90423A71B8368E42645F904424346 /* XCDYouTubePlayerScript.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubePlayerScript.m; path = XCDYouTubeKit/XCDYouTubePlayerScript.m; sourceTree = "<group>"; };
 		66DA737E590950F5A5EBCB84AE5A0B61 /* Pods-CameraLiveStream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CameraLiveStream-umbrella.h"; sourceTree = "<group>"; };
 		6C1BE1E931BE48FDC4937FDE741DACC8 /* Pods-CameraLiveStream-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CameraLiveStream-acknowledgements.plist"; sourceTree = "<group>"; };
+		73E8C4E626C98CFBC9F44CCE6DC674E4 /* XCDYouTubeVideoWebpage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoWebpage.m; path = XCDYouTubeKit/XCDYouTubeVideoWebpage.m; sourceTree = "<group>"; };
+		740FEDEC4B6771DB46D2CAC32E7DB8C0 /* XCDYouTubeLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeLogger.m; path = XCDYouTubeKit/XCDYouTubeLogger.m; sourceTree = "<group>"; };
+		7A9C01923B48DA78BC60A4D9C9C005E7 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Source/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		7FCCE2A5AD93065328A1FD2EBDE064A9 /* XCDYouTubeClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeClient.h; path = XCDYouTubeKit/XCDYouTubeClient.h; sourceTree = "<group>"; };
+		81ACCA25F0D0739F2BEA6EE90C4A0B13 /* CocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
 		83E50E38C770EE3B95C6F942F4381C5F /* Pods-CameraLiveStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CameraLiveStream.debug.xcconfig"; sourceTree = "<group>"; };
-		8F9509718CFCC3D81230AA7CF02478B7 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
-		9235AEFD042C8D96AF4B4AA61E18C420 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Source/GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		86160FB1E79C36722608A5561729BF07 /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoPlayerViewController.m; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
+		8782F2DE8191F654A1A09787A3A5E8AD /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoPlayerViewController.h; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
+		896098063D4DA7AC2DC1C6196731812A /* XCDYouTubeLogger+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCDYouTubeLogger+Private.h"; path = "XCDYouTubeKit/XCDYouTubeLogger+Private.h"; sourceTree = "<group>"; };
+		9085B6333B9B92AF7228A63CC372F035 /* XCDYouTubeClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeClient.m; path = XCDYouTubeKit/XCDYouTubeClient.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E3725257C79D0C80F87B9E2B291C17A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A847C3B26F9C9E99A5ACEACF501F86DD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		A8A7C0B72CB1BFEC20A42E9E5B3E1A5D /* CocoaAsyncSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-umbrella.h"; sourceTree = "<group>"; };
-		AEE3A3E21C4B978FE0BCEB9613DABBF6 /* CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.xcconfig; sourceTree = "<group>"; };
+		9B67D4A10EBB2D121188FF88128BE66A /* XCDYouTubeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XCDYouTubeKit.framework; path = XCDYouTubeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4AA20AF5C35353C9FF4FAE32A24CC7D /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		A77405B182FEF56ED225844DF6AA7BC9 /* XCDYouTubeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCDYouTubeKit-umbrella.h"; sourceTree = "<group>"; };
 		B243814E97239075F6A5B7DC9ACE872B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4534D63D3BAA8DA70D3EFFB4EEDE0E7 /* CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.xcconfig; sourceTree = "<group>"; };
+		B51432AF533532EEFF337BB096F0D335 /* XCDYouTubeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = XCDYouTubeKit.modulemap; sourceTree = "<group>"; };
+		B58F609FFC5A1626490896F1D67224B7 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		B6D7FD5A3910B052FE12E8A45952FA15 /* XCDYouTubeVideoWebpage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoWebpage.h; path = XCDYouTubeKit/XCDYouTubeVideoWebpage.h; sourceTree = "<group>"; };
 		C44ADD7297943E05282D9986CC0F5D6D /* Pods-CameraLiveStream-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CameraLiveStream-resources.sh"; sourceTree = "<group>"; };
 		CEA1DF40DD30C9F4C824699E586F77B7 /* Pods-CameraLiveStream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CameraLiveStream-dummy.m"; sourceTree = "<group>"; };
-		D82B81E88C7D98976B018DB4903B5D0C /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
-		EAFC14CC9E80D6662E743E47E01EF81B /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaAsyncSocket.framework; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D379869489E53B17311FE5B8F2D4293B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC3398625B8977346AF9241F935E0792 /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
+		E0A1AD79C8E9F2D7104197E80F9C28D9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		E95F07B3936CFC41461B847953936AF9 /* XCDYouTubeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCDYouTubeKit-prefix.pch"; sourceTree = "<group>"; };
 		EEF19FF7BD4079E2CCF8783212B5F5C2 /* Pods-CameraLiveStream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CameraLiveStream.modulemap"; sourceTree = "<group>"; };
-		FA669EA9DB68616A6ECA64CA78D52EAC /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
+		EF1779673C5778BED388AFAF0902EF6D /* CocoaAsyncSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-umbrella.h"; sourceTree = "<group>"; };
+		F0360A033C72CA32ECF3088EDB6905B9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		F51F85395854F2AF0EB0CBA251444E3A /* Pods_CameraLiveStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CameraLiveStream.framework; path = "Pods-CameraLiveStream.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F58548C8EA7AD913D3EEC47FDA420AD0 /* XCDYouTubePlayerScript.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubePlayerScript.h; path = XCDYouTubeKit/XCDYouTubePlayerScript.h; sourceTree = "<group>"; };
+		FAC00524D7C4A0A6B94819BCB8BEB13D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1F36F2E29B8FE14E64EAFE3C9405B745 /* Frameworks */ = {
+		2CBE451A486E9C7DD996A81D6EAD668B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B49A6B28E06F0E1E3C9D0F830E8ADF6 /* Foundation.framework in Frameworks */,
+				679CD61BA9EF586C3BEC00A5E59B97D9 /* Foundation.framework in Frameworks */,
+				114BBAFDDD6F49F02BE4998C506FAFA2 /* JavaScriptCore.framework in Frameworks */,
+				21F8E19AAFE55A14C00857C5886855E5 /* MediaPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A3FACEE8C263C2999E26A1C89741098 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FB1938FF68445DE8C1A7B5C776DFD18 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +151,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6D888213905F34217EF1880BE2758BA /* iOS */,
+				6A6F26E51D7DD51EA9D0DCC42582230E /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34C01832C7EFECC71F63691BACDBBA51 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6DA8515824D9579915ABC45D13769F2 /* CocoaAsyncSocket */,
+				64A3C0C8B575D88DD40D674FAD561CEF /* XCDYouTubeKit */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		44AC237A96BB545A880A3CB42476269D /* Targets Support Files */ = {
@@ -98,50 +176,65 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		57B648335473190C3B0747F8DB761F76 /* Support Files */ = {
+		64A3C0C8B575D88DD40D674FAD561CEF /* XCDYouTubeKit */ = {
 			isa = PBXGroup;
 			children = (
-				56387DA55BBF9D5729BB7A1C311C2894 /* CocoaAsyncSocket.modulemap */,
-				AEE3A3E21C4B978FE0BCEB9613DABBF6 /* CocoaAsyncSocket.xcconfig */,
-				FA669EA9DB68616A6ECA64CA78D52EAC /* CocoaAsyncSocket-dummy.m */,
-				601E37EDFF15F9E763332F8ED114AF13 /* CocoaAsyncSocket-prefix.pch */,
-				A8A7C0B72CB1BFEC20A42E9E5B3E1A5D /* CocoaAsyncSocket-umbrella.h */,
-				024FAD3A9561D2F4CB106D15D9557461 /* Info.plist */,
+				7FCCE2A5AD93065328A1FD2EBDE064A9 /* XCDYouTubeClient.h */,
+				9085B6333B9B92AF7228A63CC372F035 /* XCDYouTubeClient.m */,
+				4715F614D7F18D619C2AC299DDDFB7EC /* XCDYouTubeError.h */,
+				371BB54448C5A7C5F84E96C31DFDF1C4 /* XCDYouTubeKit.h */,
+				5A34FC484D71C295EF515F2FDBF3C409 /* XCDYouTubeLogger.h */,
+				740FEDEC4B6771DB46D2CAC32E7DB8C0 /* XCDYouTubeLogger.m */,
+				896098063D4DA7AC2DC1C6196731812A /* XCDYouTubeLogger+Private.h */,
+				3E1F856DBCFA380895AECA1DEDC0A148 /* XCDYouTubeOperation.h */,
+				F58548C8EA7AD913D3EEC47FDA420AD0 /* XCDYouTubePlayerScript.h */,
+				5FB90423A71B8368E42645F904424346 /* XCDYouTubePlayerScript.m */,
+				3A9C6E18B4A19CFC6D5F51850DC6A0C4 /* XCDYouTubeVideo.h */,
+				1AD2A88B59628388069FEE90CA645102 /* XCDYouTubeVideo.m */,
+				32C6E04BE91D0E6FE52380943B7689B1 /* XCDYouTubeVideo+Private.h */,
+				03F5AC3B116B83E15AB84348E01CE17E /* XCDYouTubeVideoOperation.h */,
+				10FFCEF60BCDDD3710B1659995022BE4 /* XCDYouTubeVideoOperation.m */,
+				8782F2DE8191F654A1A09787A3A5E8AD /* XCDYouTubeVideoPlayerViewController.h */,
+				86160FB1E79C36722608A5561729BF07 /* XCDYouTubeVideoPlayerViewController.m */,
+				B6D7FD5A3910B052FE12E8A45952FA15 /* XCDYouTubeVideoWebpage.h */,
+				73E8C4E626C98CFBC9F44CCE6DC674E4 /* XCDYouTubeVideoWebpage.m */,
+				B0AD182AA40E520C52CBAB04B3586F2E /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/CocoaAsyncSocket";
+			name = XCDYouTubeKit;
+			path = XCDYouTubeKit;
+			sourceTree = "<group>";
+		};
+		6A6F26E51D7DD51EA9D0DCC42582230E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E0A1AD79C8E9F2D7104197E80F9C28D9 /* CFNetwork.framework */,
+				FAC00524D7C4A0A6B94819BCB8BEB13D /* Foundation.framework */,
+				2BE48249F551F0920E51724B91BC2455 /* JavaScriptCore.framework */,
+				5F57F87B4419723C8142FEA89151D8AB /* MediaPlayer.framework */,
+				F0360A033C72CA32ECF3088EDB6905B9 /* Security.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				991819176034B11A99ECC53C250D06AD /* Pods */,
-				FE2FDC24EAEAA61D20E6AB6454A51291 /* Products */,
+				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
+				34C01832C7EFECC71F63691BACDBBA51 /* Pods */,
+				83A72A12FE522FF4CFE33623886B8B64 /* Products */,
 				44AC237A96BB545A880A3CB42476269D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		97CDCB5A0A30A5875BD2674D78A4B922 /* CocoaAsyncSocket */ = {
+		83A72A12FE522FF4CFE33623886B8B64 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D82B81E88C7D98976B018DB4903B5D0C /* GCDAsyncSocket.h */,
-				8F9509718CFCC3D81230AA7CF02478B7 /* GCDAsyncSocket.m */,
-				30CCCF41576100268BFA48C3EED9517C /* GCDAsyncUdpSocket.h */,
-				9235AEFD042C8D96AF4B4AA61E18C420 /* GCDAsyncUdpSocket.m */,
-				57B648335473190C3B0747F8DB761F76 /* Support Files */,
+				5272AC2BC7C5689C61EA20EE3ECCB8B4 /* CocoaAsyncSocket.framework */,
+				F51F85395854F2AF0EB0CBA251444E3A /* Pods_CameraLiveStream.framework */,
+				9B67D4A10EBB2D121188FF88128BE66A /* XCDYouTubeKit.framework */,
 			);
-			name = CocoaAsyncSocket;
-			path = CocoaAsyncSocket;
-			sourceTree = "<group>";
-		};
-		991819176034B11A99ECC53C250D06AD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				97CDCB5A0A30A5875BD2674D78A4B922 /* CocoaAsyncSocket */,
-			);
-			name = Pods;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A23E5DCF9AFC80E1118499E8C1584B2E /* Pods-CameraLiveStream */ = {
@@ -162,28 +255,58 @@
 			path = "Target Support Files/Pods-CameraLiveStream";
 			sourceTree = "<group>";
 		};
-		D6D888213905F34217EF1880BE2758BA /* iOS */ = {
+		B0AD182AA40E520C52CBAB04B3586F2E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A847C3B26F9C9E99A5ACEACF501F86DD /* CFNetwork.framework */,
-				9E3725257C79D0C80F87B9E2B291C17A /* Foundation.framework */,
-				50F6DD994291AA39A94BEECAFAF0D785 /* Security.framework */,
+				511BC627FE9FB8DF3AD669BCF6A7BB83 /* Info.plist */,
+				B51432AF533532EEFF337BB096F0D335 /* XCDYouTubeKit.modulemap */,
+				5E61D141587397D4A62907326ACCB336 /* XCDYouTubeKit.xcconfig */,
+				4A4B77EE985565A653D52741850B9ACF /* XCDYouTubeKit-dummy.m */,
+				E95F07B3936CFC41461B847953936AF9 /* XCDYouTubeKit-prefix.pch */,
+				A77405B182FEF56ED225844DF6AA7BC9 /* XCDYouTubeKit-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/XCDYouTubeKit";
 			sourceTree = "<group>";
 		};
-		FE2FDC24EAEAA61D20E6AB6454A51291 /* Products */ = {
+		B7853BF9F1693FEDF41EB204C7A50032 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EAFC14CC9E80D6662E743E47E01EF81B /* CocoaAsyncSocket.framework */,
-				5309A46149A31DA0919F86B4D510C6B6 /* Pods_CameraLiveStream.framework */,
+				81ACCA25F0D0739F2BEA6EE90C4A0B13 /* CocoaAsyncSocket.modulemap */,
+				B4534D63D3BAA8DA70D3EFFB4EEDE0E7 /* CocoaAsyncSocket.xcconfig */,
+				05A22A7EF6FF6FB0242977C300CC73F2 /* CocoaAsyncSocket-dummy.m */,
+				DC3398625B8977346AF9241F935E0792 /* CocoaAsyncSocket-prefix.pch */,
+				EF1779673C5778BED388AFAF0902EF6D /* CocoaAsyncSocket-umbrella.h */,
+				D379869489E53B17311FE5B8F2D4293B /* Info.plist */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/CocoaAsyncSocket";
+			sourceTree = "<group>";
+		};
+		F6DA8515824D9579915ABC45D13769F2 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				B58F609FFC5A1626490896F1D67224B7 /* GCDAsyncSocket.h */,
+				A4AA20AF5C35353C9FF4FAE32A24CC7D /* GCDAsyncSocket.m */,
+				7A9C01923B48DA78BC60A4D9C9C005E7 /* GCDAsyncUdpSocket.h */,
+				151E04DFE6F99C77CD3CC06B203C4BC6 /* GCDAsyncUdpSocket.m */,
+				B7853BF9F1693FEDF41EB204C7A50032 /* Support Files */,
+			);
+			name = CocoaAsyncSocket;
+			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		01364DF89F9F9318AFC404D9937B7535 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F79A5423FC0658C6C249F184CB39D333 /* Pods-CameraLiveStream-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		066131069354C4CC132CAB645145E8F7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,33 +317,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C70384AF0BAA76F40BB01855453A4840 /* Headers */ = {
+		8EFCC05AAD3F1A94C1BD5D10E3DA0DE1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9CA6CDA7A405D65DFF22CE683856F76 /* Pods-CameraLiveStream-umbrella.h in Headers */,
+				C869588956C80F7DE006A8528D107E8D /* XCDYouTubeClient.h in Headers */,
+				50DF71E24FC48B9C7953B78660FE309B /* XCDYouTubeError.h in Headers */,
+				BBAD0B6F9810E9AE8F824C855DA0888D /* XCDYouTubeKit-umbrella.h in Headers */,
+				CAE5324EE72E957CA1A8FDE8523110C8 /* XCDYouTubeKit.h in Headers */,
+				DB8529EE13A449F06A8307D69E78F431 /* XCDYouTubeLogger+Private.h in Headers */,
+				A021D5E2476A65E4D7230346F145470D /* XCDYouTubeLogger.h in Headers */,
+				57B5A37496807A52B529F719A46038DD /* XCDYouTubeOperation.h in Headers */,
+				7C124F1A6CC9B5AA47BAA245EDE0B31F /* XCDYouTubePlayerScript.h in Headers */,
+				8C42A5DDEAFBF218D72FCA7B0A2DE6EE /* XCDYouTubeVideo+Private.h in Headers */,
+				D1B0CC683B9801948A1522577BDFC374 /* XCDYouTubeVideo.h in Headers */,
+				725C2C98A9E2A82144D9478CC0EFF555 /* XCDYouTubeVideoOperation.h in Headers */,
+				63DC3DF064C577C8F82ED2028930ECE7 /* XCDYouTubeVideoPlayerViewController.h in Headers */,
+				316E4C757BC24FBC4128E7AD4AA38CEF /* XCDYouTubeVideoWebpage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		37E40DAC39512C4DDB0B4F4D58A58234 /* Pods-CameraLiveStream */ = {
+		0E67B2EB6BCF955D702899CDB9677AB1 /* XCDYouTubeKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7D9F3DC8B1F6E2E1DB0FED2B56F7E9B /* Build configuration list for PBXNativeTarget "Pods-CameraLiveStream" */;
+			buildConfigurationList = 12689DCAF11CBDB8E1E8188272104419 /* Build configuration list for PBXNativeTarget "XCDYouTubeKit" */;
 			buildPhases = (
-				233A17076BD6C666807868602F4EA5EB /* Sources */,
-				1F36F2E29B8FE14E64EAFE3C9405B745 /* Frameworks */,
-				C70384AF0BAA76F40BB01855453A4840 /* Headers */,
+				669F7321E95C8F83BA8CD31B51A78EE3 /* Sources */,
+				2CBE451A486E9C7DD996A81D6EAD668B /* Frameworks */,
+				8EFCC05AAD3F1A94C1BD5D10E3DA0DE1 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2CC95CD4218FC312D1D15C2DC751AA25 /* PBXTargetDependency */,
+			);
+			name = XCDYouTubeKit;
+			productName = XCDYouTubeKit;
+			productReference = 9B67D4A10EBB2D121188FF88128BE66A /* XCDYouTubeKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8CBA4975F73DCE1E89F0000341599CE0 /* Pods-CameraLiveStream */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6CC4DF9E8B77A2D27FFB1BB53653B76 /* Build configuration list for PBXNativeTarget "Pods-CameraLiveStream" */;
+			buildPhases = (
+				EE213292FDA3330A203913C7E945F0B3 /* Sources */,
+				3A3FACEE8C263C2999E26A1C89741098 /* Frameworks */,
+				01364DF89F9F9318AFC404D9937B7535 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CB7B982F0B114E557B9CD69E2FDE70F /* PBXTargetDependency */,
+				A2966B34592FA16896F71F8BFA4C6C34 /* PBXTargetDependency */,
 			);
 			name = "Pods-CameraLiveStream";
 			productName = "Pods-CameraLiveStream";
-			productReference = 5309A46149A31DA0919F86B4D510C6B6 /* Pods_CameraLiveStream.framework */;
+			productReference = F51F85395854F2AF0EB0CBA251444E3A /* Pods_CameraLiveStream.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AC0D2D2B4EE7C873431AB3502859CA60 /* CocoaAsyncSocket */ = {
@@ -237,7 +390,7 @@
 			);
 			name = CocoaAsyncSocket;
 			productName = CocoaAsyncSocket;
-			productReference = EAFC14CC9E80D6662E743E47E01EF81B /* CocoaAsyncSocket.framework */;
+			productReference = 5272AC2BC7C5689C61EA20EE3ECCB8B4 /* CocoaAsyncSocket.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -257,22 +410,38 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = FE2FDC24EAEAA61D20E6AB6454A51291 /* Products */;
+			productRefGroup = 83A72A12FE522FF4CFE33623886B8B64 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AC0D2D2B4EE7C873431AB3502859CA60 /* CocoaAsyncSocket */,
-				37E40DAC39512C4DDB0B4F4D58A58234 /* Pods-CameraLiveStream */,
+				8CBA4975F73DCE1E89F0000341599CE0 /* Pods-CameraLiveStream */,
+				0E67B2EB6BCF955D702899CDB9677AB1 /* XCDYouTubeKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		233A17076BD6C666807868602F4EA5EB /* Sources */ = {
+		669F7321E95C8F83BA8CD31B51A78EE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0747F307F142F52FCE19296C1C1DDF /* Pods-CameraLiveStream-dummy.m in Sources */,
+				1425E49D4ECAA4282DBE8BAC5113802A /* XCDYouTubeClient.m in Sources */,
+				FF0EDB8A49DD965A50AB951ADDACB3F2 /* XCDYouTubeKit-dummy.m in Sources */,
+				E45E1D2BB1A13E4D5C787930D1E0AFB5 /* XCDYouTubeLogger.m in Sources */,
+				45A4C7330118D7BE4B0163FA0DC15D7E /* XCDYouTubePlayerScript.m in Sources */,
+				4EF75D9CA852158A10E1D641D4D7DCA2 /* XCDYouTubeVideo.m in Sources */,
+				9F2635C972A1FA3666EFBF420DB40ADB /* XCDYouTubeVideoOperation.m in Sources */,
+				825D63902C72C093CD8C2E2AF4926D3C /* XCDYouTubeVideoPlayerViewController.m in Sources */,
+				648FECCE63820113BFE2C678C10328EC /* XCDYouTubeVideoWebpage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE213292FDA3330A203913C7E945F0B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92113A31D57868C8A4C301290C118126 /* Pods-CameraLiveStream-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,18 +458,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2CC95CD4218FC312D1D15C2DC751AA25 /* PBXTargetDependency */ = {
+		3CB7B982F0B114E557B9CD69E2FDE70F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaAsyncSocket;
 			target = AC0D2D2B4EE7C873431AB3502859CA60 /* CocoaAsyncSocket */;
-			targetProxy = A0A96A6903D23201186B66DAB4213D58 /* PBXContainerItemProxy */;
+			targetProxy = 4B227073F1EA8ECE4C5A696188B52DD7 /* PBXContainerItemProxy */;
+		};
+		A2966B34592FA16896F71F8BFA4C6C34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = XCDYouTubeKit;
+			target = 0E67B2EB6BCF955D702899CDB9677AB1 /* XCDYouTubeKit */;
+			targetProxy = EAB1E9CE5379197F56295336C266960F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		16774DE3A0A988E6D17E8F3CC2AD6A3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEE3A3E21C4B978FE0BCEB9613DABBF6 /* CocoaAsyncSocket.xcconfig */;
+			baseConfigurationReference = B4534D63D3BAA8DA70D3EFFB4EEDE0E7 /* CocoaAsyncSocket.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -331,7 +506,7 @@
 			};
 			name = Release;
 		};
-		707B86CFB21B645E37109F39754D4051 /* Release */ = {
+		1A41B15D3AA834993ADDD808FA9D8764 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -367,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
@@ -375,9 +550,111 @@
 			};
 			name = Release;
 		};
+		1BDA88A4236F11AA10C5EF84734AEE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83E50E38C770EE3B95C6F942F4381C5F /* Pods-CameraLiveStream.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CameraLiveStream/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CameraLiveStream;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		302939E5139A54FB965D61DEFAB33231 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E61D141587397D4A62907326ACCB336 /* XCDYouTubeKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCDYouTubeKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = XCDYouTubeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4790E01C8F54E1BA5D08779719C13649 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E61D141587397D4A62907326ACCB336 /* XCDYouTubeKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCDYouTubeKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = XCDYouTubeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		7631DE45BBDF48E613335CA6421DEA81 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEE3A3E21C4B978FE0BCEB9613DABBF6 /* CocoaAsyncSocket.xcconfig */;
+			baseConfigurationReference = B4534D63D3BAA8DA70D3EFFB4EEDE0E7 /* CocoaAsyncSocket.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -408,79 +685,7 @@
 			};
 			name = Debug;
 		};
-		81D82D80F7BE27C44D399423E958AA58 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83E50E38C770EE3B95C6F942F4381C5F /* Pods-CameraLiveStream.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CameraLiveStream/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CameraLiveStream;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E7A216325CBC359F636A489D4439F8B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4489525BB9E762F4DD96F33C9F1F37D5 /* Pods-CameraLiveStream.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CameraLiveStream/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CameraLiveStream;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EF26A3C5B6EDA309192C6025F703DE0A /* Debug */ = {
+		BC80BBB5C066539FFFC0B2127CA5D3C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -520,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -529,14 +734,68 @@
 			};
 			name = Debug;
 		};
+		E1B105631C9DC8671273E82A9F39D54E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4489525BB9E762F4DD96F33C9F1F37D5 /* Pods-CameraLiveStream.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CameraLiveStream/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CameraLiveStream/Pods-CameraLiveStream.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CameraLiveStream;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		12689DCAF11CBDB8E1E8188272104419 /* Build configuration list for PBXNativeTarget "XCDYouTubeKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4790E01C8F54E1BA5D08779719C13649 /* Debug */,
+				302939E5139A54FB965D61DEFAB33231 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EF26A3C5B6EDA309192C6025F703DE0A /* Debug */,
-				707B86CFB21B645E37109F39754D4051 /* Release */,
+				BC80BBB5C066539FFFC0B2127CA5D3C4 /* Debug */,
+				1A41B15D3AA834993ADDD808FA9D8764 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6CC4DF9E8B77A2D27FFB1BB53653B76 /* Build configuration list for PBXNativeTarget "Pods-CameraLiveStream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BDA88A4236F11AA10C5EF84734AEE64 /* Debug */,
+				E1B105631C9DC8671273E82A9F39D54E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -546,15 +805,6 @@
 			buildConfigurations = (
 				7631DE45BBDF48E613335CA6421DEA81 /* Debug */,
 				16774DE3A0A988E6D17E8F3CC2AD6A3D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F7D9F3DC8B1F6E2E1DB0FED2B56F7E9B /* Build configuration list for PBXNativeTarget "Pods-CameraLiveStream" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				81D82D80F7BE27C44D399423E958AA58 /* Debug */,
-				E7A216325CBC359F636A489D4439F8B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
