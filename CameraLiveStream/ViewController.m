@@ -17,7 +17,8 @@
     dispatch_queue_t backgroundQueue,sendScreenFramesForUploadQueue;
     NSInteger SCREENWIDTH,SCREENHEIGHT;
     RPScreenRecorder *recorder;
-    NSMutableArray *frames;
+    CFMutableArrayRef frames;
+    int FR;
 }
 @end
 
@@ -34,11 +35,12 @@ AVSampleBufferDisplayLayer* displayLayer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    frames=[NSMutableArray new];
+    frames=CFArrayCreateMutable(kCFAllocatorDefault, 0, NULL);
     SCREENWIDTH=[UIScreen mainScreen].bounds.size.width;
     SCREENHEIGHT=[UIScreen mainScreen].bounds.size.height;
     tag=0;
     count=0;
+    FR=0;
     dispatch_queue_t queue = dispatch_queue_create("com.socketDelegate.queue", DISPATCH_QUEUE_SERIAL);
     backgroundQueue=dispatch_queue_create("com.livestream.backgroundQueue", DISPATCH_QUEUE_SERIAL);
     sendScreenFramesForUploadQueue=dispatch_queue_create("com.sendScreenFramesForUpload.Queue", DISPATCH_QUEUE_SERIAL);
@@ -46,13 +48,37 @@ AVSampleBufferDisplayLayer* displayLayer;
     NSError *error;
     h264Encoder = [H264HwEncoderImpl alloc];
     [h264Encoder initWithConfiguration];
-    //[self initializeVideoCaptureSession];
+   // [self initializeVideoCaptureSession];
     [h264Encoder initEncode:750 height:1334];
     h264Encoder.delegate = self;
     [self initializeScreenRecorder];
     [self loadWebView];
+   // [self startTimer];
     
 }
+
+-(void)startTimer
+{
+    [NSTimer scheduledTimerWithTimeInterval:(1.0)
+                                     target:self
+                                   selector:@selector(printFrameRate)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+
+-(void)printFrameRate
+{
+    //NSLog(@"%d",FR);
+    if(CFArrayGetCount(frames)>0)
+    {
+        CMSampleBufferRef sampleBuffer=(CMSampleBufferRef)CFArrayGetValueAtIndex(frames, 0);
+        CFArrayRemoveValueAtIndex(frames, 0);
+        [h264Encoder encode:sampleBuffer];
+    }
+}
+
+
 
 
 -(void)loadWebView
@@ -154,14 +180,14 @@ AVSampleBufferDisplayLayer* displayLayer;
     if ([connection isVideoOrientationSupported]) {
         [connection setVideoOrientation:[UIDevice currentDevice].orientation];
     }
-    
+    FR++;
     [h264Encoder encode:sampleBuffer];
 }
 
 
 - (void)gotSpsPps:(NSData*)sps pps:(NSData*)pps
 {
-    NSLog(@"gotSpsPps %d %d", (int)[sps length], (int)[pps length]);
+    //NSLog(@"gotSpsPps %d %d", (int)[sps length], (int)[pps length]);
     
     
     dispatch_async(backgroundQueue, ^{
@@ -172,7 +198,7 @@ AVSampleBufferDisplayLayer* displayLayer;
 }
 - (void)gotEncodedData:(NSData*)data isKeyFrame:(BOOL)isKeyFrame
 {
-    NSLog(@"gotEncodedData %d", (int)[data length]);
+    //NSLog(@"gotEncodedData %d", (int)[data length]);
     //static int framecount = 1;
     
     
@@ -190,7 +216,7 @@ AVSampleBufferDisplayLayer* displayLayer;
     NSMutableData *NALUnit=[NSMutableData dataWithBytes:startCode length:length];
     [NALUnit appendData:data];
     [udpSocket sendData:NALUnit toHost:@"172.20.10.11" port:1900 withTimeout:-1 tag:tag++];
-    NSLog(@"Packet - %d, Size - %lu, Type - %d",count++,[NALUnit length],type);
+    //NSLog(@"Packet - %d, Size - %lu, Type - %d",count++,[NALUnit length],type);
 }
 
 
@@ -202,12 +228,12 @@ AVSampleBufferDisplayLayer* displayLayer;
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
-    NSLog(@"1");
+    //NSLog(@"1");
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
 {
-    NSLog(@"1");
+    //NSLog(@"1");
 }
 
 
@@ -244,14 +270,30 @@ AVSampleBufferDisplayLayer* displayLayer;
     
         [recorder startCaptureWithHandler:^(CMSampleBufferRef  _Nonnull sampleBuffer, RPSampleBufferType bufferType, NSError * _Nullable error) {
             if(bufferType==1)
-                [h264Encoder encode:sampleBuffer];
+            {
+                //CFArrayAppendValue(frames, CFRetain(sampleBuffer));
+                FR=(FR+1)%2;
+                if(FR)
+                 [h264Encoder encode:sampleBuffer];
+            }
         } completionHandler:^(NSError * _Nullable error) {
-            NSLog(@"1");
+            //NSLog(@"1");
         }];
 
 }
 
-
+//-(CVPixelBufferRef)copyPixelBuffer:(CVPixelBufferRef)pixelBuffer
+//{
+//    if(CFGetTypeID(pixelBuffer) == CVPixelBufferGetTypeID())
+//        NSLog(@"%s","copy() cannot be called on a non-CVPixelBuffer");
+//    CVPixelBufferRef _copy;
+//    CVPixelBufferCreate(nil,
+//                        CVPixelBufferGetWidth(pixelBuffer),
+//                        CVPixelBufferGetHeight(pixelBuffer),
+//                        CVPixelBufferGetPixelFormatType(pixelBuffer),
+//                        CVBufferGetAttachments(pixelBuffer, kCVAttachmentMode_ShouldPropagate).take,
+//                        &_copy);
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

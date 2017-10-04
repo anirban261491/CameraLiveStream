@@ -55,7 +55,7 @@
 void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStatus status, VTEncodeInfoFlags infoFlags,
 CMSampleBufferRef sampleBuffer )
 {
-    NSLog(@"didCompressH264 called with status %d infoFlags %d", (int)status, (int)infoFlags);
+    //NSLog(@"didCompressH264 called with status %d infoFlags %d", (int)status, (int)infoFlags);
     if (status != 0) return;
     
     if (!CMSampleBufferDataIsReady(sampleBuffer))
@@ -167,7 +167,7 @@ CMSampleBufferRef sampleBuffer )
         // Set the properties
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanFalse);
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Main_5_2);
-        int bitRate = 400*1024;
+        int bitRate = 1000*1024;
         int bitRateLimit = (bitRate) / 8;
         
         // that's why we set data in byte/second
@@ -181,7 +181,9 @@ CMSampleBufferRef sampleBuffer )
         //VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_AverageBitRate, (__bridge CFTypeRef)@(bitRate));
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_DataRateLimits, dataRateLimits);
         
-        int frameRate=60;
+        int frameRate=30;
+        second=10;
+        secNum = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &second);
         CFNumberRef frameRateValue = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &frameRate);
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_ExpectedFrameRate, frameRateValue);
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, secNum);
@@ -196,7 +198,7 @@ CMSampleBufferRef sampleBuffer )
           frameCount++;
             // Get the CV Image buffer
             CVImageBufferRef imageBuffer = (CVImageBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
-            
+
             // Create properties
             CMTime presentationTimeStamp = CMTimeMake(frameCount,30);
             //CMTime duration = CMTimeMake(1, DURATION);
@@ -220,7 +222,7 @@ CMSampleBufferRef sampleBuffer )
                 error = NULL;
                 return;
             }
-            NSLog(@"H264: VTCompressionSessionEncodeFrame Success");
+            //NSLog(@"H264: VTCompressionSessionEncodeFrame Success");
       });
     
     
