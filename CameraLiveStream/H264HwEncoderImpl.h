@@ -1,3 +1,11 @@
+//
+//  H264HwEncoderImpl.m
+//  h264v1
+//
+//  Created by Ganvir, Manish on 3/31/15.
+//  Copyright (c) 2015 Ganvir, Manish. All rights reserved.
+//
+ 
 #import <Foundation/Foundation.h>
 @import AVFoundation;
 @protocol H264HwEncoderImplDelegate <NSObject>
