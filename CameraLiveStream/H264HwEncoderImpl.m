@@ -1,3 +1,11 @@
+//
+//  H264HwEncoderImpl.m
+//  h264v1
+//
+//  Created by Ganvir, Manish on 3/31/15.
+//  Copyright (c) 2015 Ganvir, Manish. All rights reserved.
+//
+
 #import "H264HwEncoderImpl.h"
 #define YUV_FRAME_SIZE 2000
 #define FRAME_WIDTH
